@@ -11,7 +11,7 @@ public class TabManager<TabbableModel>: ObservableObject where TabbableModel: Ta
     @Published var selection: TabbableModel.Id? = nil {
         willSet {
             if newValue != selection {
-                models.first(where: { $0.id == selection })?.onDeselection()
+                models.first(where: { $0.id == selection })?.onDeselection?()
             }
         }
     }

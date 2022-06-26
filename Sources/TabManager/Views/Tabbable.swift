@@ -14,5 +14,5 @@ public protocol Tabbable<Id, T> where Id: Hashable {
     associatedtype Id
     var id: Id { get }
     var onSelection:((_ value: T?) -> Void)? { get }
-    var onDeselection:() -> Void { get }
+    var onDeselection:(() -> Void)? { get }
 }
