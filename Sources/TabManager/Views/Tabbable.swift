@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @available(macOS 10.15, *)
-protocol Tabbable<Id, T> where Id: Hashable {
+public protocol Tabbable<Id, T> where Id: Hashable {
     associatedtype T
     associatedtype Id
     var id: Id { get }
