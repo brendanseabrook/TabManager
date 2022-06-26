@@ -8,7 +8,7 @@
 import Foundation
 
 public class TabManager<TabbableModel>: ObservableObject where TabbableModel: Tabbable {
-    @Published var selection: TabbableModel.Id? {
+    @Published var selection: TabbableModel.Id? = nil {
         willSet {
             if newValue != selection {
                 models.first(where: { $0.id == selection })?.onDeselection()
