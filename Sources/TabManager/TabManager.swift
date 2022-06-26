@@ -15,7 +15,8 @@ public class TabManager<TabbableModel>: ObservableObject where TabbableModel: Ta
             }
         }
     }
-    var models: [TabbableModel]
+    
+    public var models: [TabbableModel]
     
     public init(selection: TabbableModel.Id? = nil, models: [TabbableModel]) {
         self.selection = selection
