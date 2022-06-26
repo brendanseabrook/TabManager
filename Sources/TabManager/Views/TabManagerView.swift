@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public struct TabManagerView<TabTypes, Content>: View where Content : View, TabTypes: Tabbable {
+public struct TabManagerView<TabTypes: Tabbable, Content: View>: View {
     @ObservedObject var manager: TabManager<TabTypes>
     @ViewBuilder var content: () -> Content
     
