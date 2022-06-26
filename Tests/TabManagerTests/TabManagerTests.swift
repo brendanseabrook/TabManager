@@ -6,6 +6,6 @@ final class TabManagerTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(TabManager().text, "Hello, World!")
+        //XCTAssertEqual(TabManager().text, "Hello, World!")
     }
 }
