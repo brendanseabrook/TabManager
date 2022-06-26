@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TabManager<TabbableModel>: ObservableObject where TabbableModel: Tabbable {
+public class TabManager<TabbableModel>: ObservableObject where TabbableModel: Tabbable {
     @Published var selection: TabbableModel.Id? {
         willSet {
             if newValue != selection {
