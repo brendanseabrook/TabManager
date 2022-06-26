@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-public struct TabManagerView<TabTypes: Tabbable, Content: View>: View {
+struct TabManagerView<TabTypes: Tabbable, Content: View>: View {
     @ObservedObject var manager: TabManager<TabTypes>
     @ViewBuilder var content: () -> Content
     
-    public var body: some View {
+    var body: some View {
         TabView(selection: $manager.selection) {
             content()
         }
