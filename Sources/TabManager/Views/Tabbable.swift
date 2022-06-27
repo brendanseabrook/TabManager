@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-public protocol Tabbable<Id> {
-    associatedtype Id
-    var id: Id { get }
+public protocol Tabbable<Identifier> {
+    associatedtype Identifier
+    var id: Identifier { get }
     func onSelection()
     func onDeselection()
 }
