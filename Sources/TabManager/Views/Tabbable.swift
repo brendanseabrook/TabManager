@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @available(macOS 10.15, *)
-public protocol Tabbable<Id> where Id: Hashable {
+public protocol Tabbable<Id>: Identifiable where Id: Hashable {
     associatedtype Id
     var id: Id { get }
     func onSelection()
