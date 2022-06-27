@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class TabManager<TabbableModel>: ObservableObject where TabbableModel: Tabbable {
+public class TabManager<TabbableModel: Tabbable>: ObservableObject {
     @Published var selection: TabbableModel.Id? = nil {
         willSet {
             if newValue != selection {
@@ -23,14 +23,10 @@ public class TabManager<TabbableModel>: ObservableObject where TabbableModel: Ta
         self.models = models
     }
     
-    func moveToTab(identifiedBy: TabbableModel.Id, selectionPayload: TabbableModel.T? = nil) {
+    func moveToTab(identifiedBy: TabbableModel.Id) {
         if identifiedBy != selection {
-            models.first(where: { $0.id == identifiedBy })?.onSelection?(selectionPayload)
+            models.first(where: { $0.id == identifiedBy })?.onSelection?()
             selection = identifiedBy
         }
-    }
-    
-    func registerTabModel(model: TabbableModel) {
-        models.append(model)
     }
 }

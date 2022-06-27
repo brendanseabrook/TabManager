@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 @available(macOS 10.15, *)
-public protocol Tabbable<Id, T> where Id: Hashable {
-    associatedtype T
+public protocol Tabbable<Id> where Id: Hashable {
     associatedtype Id
     var id: Id { get }
-    var onSelection:((_ value: T?) -> Void)? { get }
+    //var onSelection:((_ value: T?) -> Void)? { get }
+    var onSelection:(() -> Void)? { get }
     var onDeselection:(() -> Void)? { get }
 }
