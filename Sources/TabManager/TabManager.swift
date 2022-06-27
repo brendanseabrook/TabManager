@@ -7,25 +7,25 @@
 
 import Foundation
 
-public class TabManager<TabbableModel: Tabbable>: ObservableObject {
-    @Published public var selection: TabbableModel.Id? = nil {
+public class TabManager<Identifier: Hashable>: ObservableObject {
+    @Published public var selection: Identifier? = nil {
         willSet {
             if newValue != selection {
-                models.first(where: { $0.id == selection })?.onDeselection()
+                models.first(where: { $0.id.hashValue == selection?.hashValue })?.onDeselection()
             }
         }
     }
     
-    public var models: [TabbableModel]
+    public var models: [any Tabbable]
     
-    public init(selection: TabbableModel.Id? = nil, models: [TabbableModel]) {
+    public init(selection: Identifier? = nil, models: [any Tabbable]) {
         self.selection = selection
         self.models = models
     }
     
-    func moveToTab(identifiedBy: TabbableModel.Id) {
+    func moveToTab(identifiedBy: Identifier) {
         if identifiedBy != selection {
-            models.first(where: { $0.id == identifiedBy })?.onSelection()
+            models.first(where: { $0.id.hashValue == identifiedBy.hashValue })?.onSelection()
             selection = identifiedBy
         }
     }

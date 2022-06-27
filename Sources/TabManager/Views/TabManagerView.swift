@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 public struct TabManagerView<TabTypes: Tabbable, Content: View>: View {
-    @ObservedObject var manager: TabManager<TabTypes>
+    @ObservedObject var manager: TabManager<TabTypes.Id>
     @ViewBuilder var content: () -> Content
     
-    public init(manager: TabManager<TabTypes>, @ViewBuilder content: @escaping () -> Content) {
+    public init(manager: TabManager<TabTypes.Id>, @ViewBuilder content: @escaping () -> Content) {
         self.manager = manager
         self.content = content
     }
