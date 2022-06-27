@@ -17,7 +17,7 @@ public protocol Tabbable<Identifier> {
 
 public class AnyTabbable<Identifier, Wrapped: Tabbable<Identifier>>: Identifiable where Identifier: Hashable {
     public let inner: Wrapped
-    init(inner: Wrapped) {
+    public init(inner: Wrapped) {
         self.inner = inner
     }
 }
