@@ -11,7 +11,7 @@ public class TabManager<TabbableModel: Tabbable>: ObservableObject {
     @Published var selection: TabbableModel.Id? = nil {
         willSet {
             if newValue != selection {
-                models.first(where: { $0.id == selection })?.onDeselection?()
+                models.first(where: { $0.id == selection })?.onDeselection()
             }
         }
     }
@@ -25,7 +25,7 @@ public class TabManager<TabbableModel: Tabbable>: ObservableObject {
     
     func moveToTab(identifiedBy: TabbableModel.Id) {
         if identifiedBy != selection {
-            models.first(where: { $0.id == identifiedBy })?.onSelection?()
+            models.first(where: { $0.id == identifiedBy })?.onSelection()
             selection = identifiedBy
         }
     }

@@ -12,7 +12,6 @@ import SwiftUI
 public protocol Tabbable<Id> where Id: Hashable {
     associatedtype Id
     var id: Id { get }
-    //var onSelection:((_ value: T?) -> Void)? { get }
-    var onSelection:(() -> Void)? { get }
-    var onDeselection:(() -> Void)? { get }
+    func onSelection()
+    func onDeselection()
 }
