@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-public struct TabManagerView<Identifier: Hashable, Content: View>: View {
-    @ObservedObject var manager: TabManager<Identifier>
+public struct TabManagerView<Identifier: Hashable, Inner: Tabbable<Identifier>, Content: View>: View {
+    @ObservedObject var manager: TabManager<Identifier, Inner>
     @ViewBuilder var content: () -> Content
     
-    public init(manager: TabManager<Identifier>, @ViewBuilder content: @escaping () -> Content) {
+    public init(manager: TabManager<Identifier, Inner>, @ViewBuilder content: @escaping () -> Content) {
         self.manager = manager
         self.content = content
     }

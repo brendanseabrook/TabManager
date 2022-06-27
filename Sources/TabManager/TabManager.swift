@@ -7,18 +7,18 @@
 
 import Foundation
 
-public class TabManager<Identifier: Hashable>: ObservableObject {
+public class TabManager<Identifier: Hashable, Inner: Tabbable<Identifier>>: ObservableObject {
     @Published public var selection: Identifier? = nil {
         willSet {
             if newValue != selection {
-                models.first(where: { $0.id.hashValue == selection?.hashValue })?.inner.onDeselection()
+                models.first(where: { $0.inner.id == selection })?.inner.onDeselection()
             }
         }
     }
     
-    public var models: [AnyTabbable<Identifier>]
+    public var models: [TestTabbable<Identifier, Inner>]
     
-    public init(selection: Identifier? = nil, models: [AnyTabbable<Identifier>]) {
+    public init(selection: Identifier? = nil, models: [TestTabbable<Identifier, Inner>]) {
         self.selection = selection
         self.models = models
     }

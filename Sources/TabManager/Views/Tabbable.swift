@@ -8,14 +8,16 @@
 import Foundation
 import SwiftUI
 
-public protocol Tabbable: Identifiable {
+public protocol Tabbable<Id> {
     associatedtype Id
     var id: Id { get }
     func onSelection()
     func onDeselection()
 }
 
-public struct AnyTabbable<Identifier: Hashable>: Identifiable {
-    var inner: any Tabbable
-    public var id: Identifier
+public class TestTabbable<Identifier, Inner: Tabbable<Identifier>>: Identifiable where Identifier: Hashable {
+    let inner: Inner
+    init(inner: Inner) {
+        self.inner = inner
+    }
 }
