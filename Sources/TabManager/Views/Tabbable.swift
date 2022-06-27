@@ -14,3 +14,8 @@ public protocol Tabbable: Identifiable {
     func onSelection()
     func onDeselection()
 }
+
+public struct AnyTabbable<Identifier: Hashable>: Identifiable {
+    var inner: any Tabbable
+    public var id: Identifier
+}
