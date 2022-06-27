@@ -15,9 +15,9 @@ public protocol Tabbable<Identifier> {
     func onDeselection()
 }
 
-public class TestTabbable<Identifier, Inner: Tabbable<Identifier>>: Identifiable where Identifier: Hashable {
-    let inner: Inner
-    init(inner: Inner) {
+public class AnyTabbable<Identifier, Wrapped: Tabbable<Identifier>>: Identifiable where Identifier: Hashable {
+    public let inner: Wrapped
+    init(inner: Wrapped) {
         self.inner = inner
     }
 }

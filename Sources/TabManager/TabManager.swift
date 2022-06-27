@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class TabManager<Identifier: Hashable, Inner: Tabbable<Identifier>>: ObservableObject {
+public class TabManager<Identifier: Hashable, Wrapped: Tabbable<Identifier>>: ObservableObject {
     @Published public var selection: Identifier? = nil {
         willSet {
             if newValue != selection {
@@ -16,9 +16,9 @@ public class TabManager<Identifier: Hashable, Inner: Tabbable<Identifier>>: Obse
         }
     }
     
-    public var models: [TestTabbable<Identifier, Inner>]
+    public var models: [AnyTabbable<Identifier, Wrapped>]
     
-    public init(selection: Identifier? = nil, models: [TestTabbable<Identifier, Inner>]) {
+    public init(selection: Identifier? = nil, models: [AnyTabbable<Identifier, Wrapped>]) {
         self.selection = selection
         self.models = models
     }
